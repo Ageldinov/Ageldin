@@ -1,13 +1,13 @@
 # Функция первой вкладки для конвертации величин
 def update(values, window):        
     # Задаем дефолтные значения
-    num = values['-IN-']
+    num = values['-AMOUNT-']
     r = 1
     # получаем доступ к текстовому элементу
-    text_elem = window['-text-']
+    text_elem = window['-RESULTS 1-']
     # Считываем значения с вкладки
-    s1 = values['-OPTION MENU-']
-    s2 = values['-OPTION MENU 2-']
+    s1 = values['-UNIT OPTION START-']
+    s2 = values['-UNIT OPTION END-']
     if s1 == 'Пикограммы':
         s1 = 'пкг.'
         if s2 == "Пикограммы":
@@ -63,5 +63,4 @@ def update(values, window):
     # Расчеты и вывод результатов
     r2 = r * float(num)
     # выводим в текст с новым числом
-    print('1')
     return(text_elem.update("Результат: {} {} это {} {}".format(num, s1, round(r2, ndigits=9), s2)))
