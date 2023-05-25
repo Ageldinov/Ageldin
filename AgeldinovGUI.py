@@ -37,22 +37,22 @@ def main():
                  ]
         PK_layout = [
                 [sg.Text('В данном окне вы сможете расчитать фармакокинетику и фармакодинамику', font='Helvetica 20'),
-                    sg.Button('Шпаргалка', enable_events=True, key='-FUNCTION5-', font='Helvetica 16')],  
+                    sg.Button('Шпаргалка', enable_events=True, key='-HELP 1-', font='Helvetica 16')],  
                     [sg.Text('Укажите используемые величины', font='Helvetica 20')],
                     [sg.Text('Единица времени:', font='Helvetica 20'),
-                     sg.OptionMenu(values=('Секунды', 'Минуты', 'Часы', 'Дни'), default_value='Минуты',  k='-OPTION MENU 3-')],
+                     sg.OptionMenu(values=('Секунды', 'Минуты', 'Часы', 'Дни'), default_value='Минуты',  k='-TIME IN-')],
                     [sg.Text('Количество временных точек:', font='Helvetica 20'),
-                     sg.Input(key='-TimePoints IN-')],
+                     sg.Input(key='-TIME POINTS IN-')],
                     [sg.Text('Единица концентрации:', font='Helvetica 20'),
-                     sg.OptionMenu(values=('пкг/мл', 'нг/мл', 'мкг/мл', 'мг/мл'), default_value='нг/мл',  k='-OPTION MENU 4-')],
+                     sg.OptionMenu(values=('пкг/мл', 'нг/мл', 'мкг/мл', 'мг/мл'), default_value='нг/мл',  k='-AMOUNT IN-')],
                     [sg.Text('Значение дозы:', font='Helvetica 20'),
                      sg.Input(key='-Dose IN-')],
                     [sg.Text('Единица дозы:', font='Helvetica 20'),
-                     sg.OptionMenu(values=('пкг', 'нг', 'мкг', 'мг'), default_value='нг',  k='-OPTION MENU 4-')],
+                     sg.OptionMenu(values=('пкг', 'нг', 'мкг', 'мг'), default_value='нг',  k='-DOSE AMOUNT IN-')],
                     [sg.Text('Файл с данными:', font='Helvetica 20'),
-                     sg.Button('Выбрать файл', enable_events=True, key='-FUNCTION3-', font='Helvetica 16')],
-                    [sg.Button('Посчитать', enable_events=True, key='-FUNCTION4-', font='Helvetica 20')],
-                    [sg.Text('Здесь появится результат', key='-text20-', font='Helvetica 20')]    
+                     sg.Button('Выбрать файл', enable_events=True, key='-DATA FILE-', font='Helvetica 16')],
+                    [sg.Button('Посчитать', enable_events=True, key='-CALCULATE 3-', font='Helvetica 20')],
+                    [sg.Text('Здесь появится результат', key='-RESULT 4-', font='Helvetica 20')]    
 
 #                [sg.Text('Результаты:  ', font='Helvetica 20')],
 #                [sg.Text('Lambda Z:', font='Helvetica 20')],
@@ -84,7 +84,7 @@ def main():
 
                     [sg.Text('Файл с данными:', font='Helvetica 20'),
                      sg.Button('Выбрать файл', enable_events=True, key='-OPEN PICTURE-', font='Helvetica 16')],
-                    [sg.Text('Здесь появится результат', key='-RESULT 3-', font='Helvetica 20')]  
+                    #[sg.Text('Здесь появится результат', key='-RESULT 3-', font='Helvetica 20')]  
                     ]
         # что будет внутри окна следующего окна
         next_layout = []
@@ -97,7 +97,7 @@ def main():
                ]]
 
         # рисуем окно, название и вкладки
-        window = sg.Window('Ageldinov', layout)
+        window = sg.Window('Ageldin', layout)
         # запускаем основной бесконечный цикл
         while True:
                 # получаем события, произошедшие в окне
@@ -120,15 +120,15 @@ def main():
                     else:
                         # запускаем связанную функцию
                         buffer_calculation.buff(values, window)
-                elif event == '-FUNCTION3-':
-                    folder_or_file = sg.popup_get_file('Выберите файд с данными', keep_on_top=True)
-                    if str(folder_or_file) == '':
-                        sg.popup("Вы выбрали: " + str(folder_or_file), keep_on_top=True)
-                elif event == '-FUNCTION5-':
+                elif event == '-DATA FILE-':
+                    data_file = sg.popup_get_file('Выберите файд с данными', keep_on_top=True)
+                    if str(data_file) != '':
+                        sg.popup("Вы выбрали: " + str(data_file), keep_on_top=True)
+                elif event == '-HELP 1-':
                         sg.popup('D = Доза \nt = Интервал дозирования \nCL = Клиренс \nVd = Объем распределения \nke = Константа скорости элюминации \nka = Константа скорости абсорбции \nF = Абсорбировшаяся фракция (Биодоступность) \nK0 = Скорость инфузии \nT = Продолжительность инфузии \nC = Концентрация в плазме', font='Helvetica 14')
-                elif event == '-FUNCTION4-':
+                elif event == '-CALCULATE 3-':
                       # запускаем связанную функцию
-                    PK_calculation.PK_cal(values)
+                    PK_calculation.PK_cal(values,window,data_file)
                 elif event == '-OPEN PICTURE-':
                     if str(values['-X END IN-']) == '' or str(values['-Y END IN-']) == '':
                         sg.popup("Ошибка ввода данных")

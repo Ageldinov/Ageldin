@@ -1,4 +1,5 @@
 # import the required library
+import PySimpleGUI as sg
 import cv2
 import numpy as np
 
@@ -42,8 +43,8 @@ def coordinates(values, window, picture):
         if k == 27:
             break
     # Находим текст вывода и выводим в него все данные и результат
-    text_elem = window['-RESULT 3-']
-    text_elem.update(points)
+    #text_elem = window['-RESULT 3-']
+    sg.popup_ok('Вы выбрали:', *points, title='')
 
     cv2.destroyAllWindows()
 
