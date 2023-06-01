@@ -68,7 +68,8 @@ If you find problems, please report them to ruslan@ageldinov.ru. Recommendations
 При переключении по вкладкам можно осуществить переход от одного инструмента к другому.
 <img width="1181" alt="Снимок экрана 2023-06-01 в 16 15 09" src="https://github.com/Ageldinov/Ageldin/assets/24789695/de9cac05-9170-45b7-9deb-1bd1dd92a6ee">
 <img width="1184" alt="Снимок экрана 2023-06-01 в 16 15 43" src="https://github.com/Ageldinov/Ageldin/assets/24789695/3abbced1-cade-4500-966a-a0fdbc4f2e4d">
-<img width="1184" alt="Снимок экрана 2023-06-01 в 16 15 43" src="https://github.com/Ageldinov/Ageldin/assets/24789695/90e442ce-7a39-4481-9867-f171187b195f">
+<img width="1184" alt="Снимок экрана 2023-06-01 в 16 16 22" src="https://github.com/Ageldinov/Ageldin/assets/24789695/ecf834ec-24b0-445a-ba9a-eea662036fdf">
+
 
 **Инструкции по сборке:**
 
