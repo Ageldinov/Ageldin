@@ -2,7 +2,7 @@
 
 **Project Name: Ageldin**
 
-**Author: Ageeldinov Ruslan**
+**Author: Ageldinov Ruslan**
 
 **Date of creation: 01/06/2023**
 
