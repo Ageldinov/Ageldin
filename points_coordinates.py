@@ -28,7 +28,6 @@ def coordinates(values, window, picture):
     # read the input image
     img = cv2.imread(str(picture))
     height, width = img.shape[:2]
-    print (height, width)
 
     # create a window
     cv2.namedWindow('Point Coordinates')
